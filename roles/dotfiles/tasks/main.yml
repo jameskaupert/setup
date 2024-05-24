@@ -16,7 +16,7 @@
 - name: Dotfiles - Install
   become: yes
   become_user: "{{ local_user }}"
-  ansible.builtin.command: 
+  ansible.builtin.command:
   args:
     cmd: "{{ dotfiles.cmd }}"
     chdir: "{{ dotfiles.path }}"
