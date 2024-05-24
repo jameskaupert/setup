@@ -2,9 +2,13 @@
 - hosts: localhost
   vars_files:
     - group_vars/all
+  collections:
+    - community.general.flatpak
   roles:
+    - { role: package-managers }
     - { role: base }
     - { role: browsers }
     - { role: dotfiles }
     - { role: editors }
+    - { role: social }
     - { role: terminals }
