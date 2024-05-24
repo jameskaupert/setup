@@ -1,7 +1,11 @@
 ---
 - hosts: localhost
+  vars:
+    local_user: "{{ local_user }}"
   vars_files:
     - group_vars/all
+  become: yes
+  become_user: "{{ local_user }}"
   roles:
     - { role: base }
     - { role: browsers }

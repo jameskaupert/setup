@@ -1,12 +1,16 @@
 ---
 # Firefox
 - name: Firefox - Ensure policies directory exists
+  become: yes
+  become_user: root
   file:
     path: /etc/firefox/policies
     recurse: true
     state: directory
 
 - name: Firefox - Copy policies
+  become: yes
+  become_user: root
   copy:
     src: policies.json
     dest: /etc/firefox/policies
