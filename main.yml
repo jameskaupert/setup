@@ -1,5 +1,10 @@
 ---
 - hosts: localhost
   become: yes
+  vars_files:
+    - group_vars/all
   roles:
-    - { role: firefox }
+    - { role: base }
+    - { role: browsers }
+    - { role: editors }
+    - { role: terminals }

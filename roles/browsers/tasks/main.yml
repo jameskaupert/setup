@@ -1,11 +1,12 @@
 ---
-- name: Ensure policies directory exists
+# Firefox
+- name: Firefox - Ensure policies directory exists
   file:
     path: /etc/firefox/policies
     recurse: true
     state: directory
 
-- name: Copy Firefox policies
+- name: Firefox - Copy policies
   copy:
     src: policies.json
     dest: /etc/firefox/policies
