@@ -12,11 +12,13 @@
     dest: .
 
 - name: Neovim - Remove existing installation
+  become: yes
   ansible.builtin.file:
     path: /opt/nvim-linux64
     state: absent
 
 - name: Neovim - Unzip new installation
+  become: yes
   ansible.builtin.unarchive:
     src: nvim-linux64.tar.gz
     dest: /opt

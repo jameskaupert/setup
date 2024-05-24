@@ -1,3 +1,5 @@
+dotfilesRepo: https://github.com/jameskaupert/dotfiles.git
+
 packages:
   - fzf
   - gcc

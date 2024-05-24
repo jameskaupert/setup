@@ -1,0 +1,11 @@
+---
+- name: Dotfiles - Get Repo
+  ansible.builtin.git:
+    repo: "{{ dotfilesRepo }}"
+    dest: $HOME/dotfiles
+
+- name: Dotfiles - Install
+  ansible.builtin.command: 
+  args:
+    cmd: ./install.sh
+    chdir: $HOME/dotfiles
