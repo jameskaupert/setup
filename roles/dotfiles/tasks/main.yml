@@ -1,4 +1,9 @@
 ---
+- name: Dotfiles - Install stow
+  ansible.builtin.package:
+    name: stow
+    state: present
+
 - name: Dotfiles - Get Repo
   ansible.builtin.git:
     repo: "{{ dotfiles.repo }}"

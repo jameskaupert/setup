@@ -6,4 +6,4 @@ dotfiles:
 packages:
   - fzf
   - gcc
-  - stow
+
