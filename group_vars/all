@@ -1,4 +1,7 @@
-dotfilesRepo: https://github.com/jameskaupert/dotfiles.git
+dotfiles: 
+  repo: https://github.com/jameskaupert/dotfiles.git
+  path: $HOME/dotfiles
+  cmd: ./install.sh
 
 packages:
   - fzf
