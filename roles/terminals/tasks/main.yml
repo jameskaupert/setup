@@ -1,5 +1,7 @@
 ---
 - name: Alacritty - Install
+  become: yes
+  become_user: root
   ansible.builtin.package:
     name: alacritty
     state: present

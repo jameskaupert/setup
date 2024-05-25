@@ -1,5 +1,7 @@
 ---
 - name: Install packages
+  become: yes
+  become_user: root
   ansible.builtin.package:
     name: "{{ packages }}"
     state: present

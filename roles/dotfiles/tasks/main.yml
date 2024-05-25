@@ -1,16 +1,23 @@
 ---
 - name: Dotfiles - Install stow
+  become: yes
+  become_user: root
   ansible.builtin.package:
     name: stow
     state: present
 
 - name: Dotfiles - Get Repo
+  become: yes
+  become_user: "{{ local_user }}"
   ansible.builtin.git:
     repo: "{{ dotfiles.repo }}"
     dest: "{{ dotfiles.path }}"
+    force: yes
 
 - name: Dotfiles - Install
-  ansible.builtin.command: 
+  become: yes
+  become_user: "{{ local_user }}"
+  ansible.builtin.command:
   args:
     cmd: "{{ dotfiles.cmd }}"
     chdir: "{{ dotfiles.path }}"

@@ -1,6 +1,8 @@
 ---
 # Vim - for simple stuff
 - name: Vim - Install
+  become: yes
+  become_user: root
   ansible.builtin.package:
     name: vim
     state: present
@@ -13,12 +15,14 @@
 
 - name: Neovim - Remove existing installation
   become: yes
+  become_user: root
   ansible.builtin.file:
     path: /opt/nvim-linux64
     state: absent
 
 - name: Neovim - Unzip new installation
   become: yes
+  become_user: root
   ansible.builtin.unarchive:
     src: nvim-linux64.tar.gz
     dest: /opt

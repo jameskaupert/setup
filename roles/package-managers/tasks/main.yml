@@ -4,6 +4,8 @@
   ansible.builtin.command: ansible-galaxy collection install -r requirements.yml
 
 - name: Flatpak - Install
+  become: yes
+  become_user: root
   ansible.builtin.package:
     name: flatpak
     state: present
