@@ -4,11 +4,17 @@
     local_user: "{{ local_user }}"
   vars_files:
     - group_vars/all
+  collections:
+    - community.general.flatpak
+
   become: yes
   become_user: "{{ local_user }}"
+
   roles:
+    - { role: package-managers }
     - { role: base }
     - { role: browsers }
     - { role: dotfiles }
     - { role: editors }
+    - { role: social }
     - { role: terminals }

@@ -1,0 +1,17 @@
+---
+- name: Ansible Community Collections - Install
+  become: yes
+  ansible.builtin.command: ansible-galaxy collection install -r requirements.yml
+
+- name: Flatpak - Install
+  become: yes
+  become_user: root
+  ansible.builtin.package:
+    name: flatpak
+    state: present
+
+- name: FlatHub - Install Repository Remote
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo

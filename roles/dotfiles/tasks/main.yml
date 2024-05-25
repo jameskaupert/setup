@@ -12,6 +12,7 @@
   ansible.builtin.git:
     repo: "{{ dotfiles.repo }}"
     dest: "{{ dotfiles.path }}"
+    force: yes
 
 - name: Dotfiles - Install
   become: yes
