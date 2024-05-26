@@ -4,3 +4,9 @@
     name: md.obsidian.Obsidian
     state: present
     method: user
+
+- name: Proton Email - Install
+  become: yes
+  become_user: root
+  ansible.builtin.apt:
+    deb: https://proton.me/download/mail/linux/ProtonMail-desktop-beta.deb
