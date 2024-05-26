@@ -16,5 +16,6 @@
     - { role: browsers }
     - { role: dotfiles }
     - { role: editors }
+    - { role: productivity }
     - { role: social }
     - { role: terminals }
