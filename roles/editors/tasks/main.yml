@@ -31,3 +31,10 @@
   ansible.builtin.file:
     path: nvim-linux64.tar.gz
     state: absent
+
+# VSCodium
+- name: VSCodium - Install
+  community.general.flatpak:
+    name: com.vscodium.codium
+    state: present
+    method: user
