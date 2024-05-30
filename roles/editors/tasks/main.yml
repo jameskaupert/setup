@@ -1,36 +1,38 @@
 ---
 # Vim - for simple stuff
 - name: Vim - Install
-  become: yes
+  become: true
   become_user: root
   ansible.builtin.package:
     name: vim
     state: present
 
 # Neovim
-- name: Neovim - Download latest binary
-  ansible.builtin.get_url:
-    url: https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-    dest: .
+- name: Neovim
+  block:
+  - name: Neovim - Download latest binary
+    ansible.builtin.get_url:
+      url: https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+      dest: .
 
-- name: Neovim - Remove existing installation
-  become: yes
-  become_user: root
-  ansible.builtin.file:
-    path: /opt/nvim-linux64
-    state: absent
+  - name: Neovim - Remove existing installation
+    become: true
+    become_user: root
+    ansible.builtin.file:
+      path: /opt/nvim-linux64
+      state: absent
 
-- name: Neovim - Unzip new installation
-  become: yes
-  become_user: root
-  ansible.builtin.unarchive:
-    src: nvim-linux64.tar.gz
-    dest: /opt
+  - name: Neovim - Unzip new installation
+    become: true
+    become_user: root
+    ansible.builtin.unarchive:
+      src: nvim-linux64.tar.gz
+      dest: /opt
 
-- name: Neovim - Remove download
-  ansible.builtin.file:
-    path: nvim-linux64.tar.gz
-    state: absent
+  - name: Neovim - Remove download
+    ansible.builtin.file:
+      path: nvim-linux64.tar.gz
+      state: absent
 
 # VSCodium
 - name: VSCodium - Install
