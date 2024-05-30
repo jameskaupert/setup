@@ -1,7 +1,23 @@
 ---
-- name: Alacritty - Install
-  become: yes
-  become_user: root
-  ansible.builtin.package:
-    name: alacritty
-    state: present
+- name: ZSH
+  block:
+  - name: Install zsh
+    ansible.builtin.package:
+      name: zsh
+      state: present
+
+  - name: Set shell to zsh
+    become: true
+    become_user: root
+    shell:
+      cmd: "chsh -s $(which zsh) {{ local_user }}"
+
+- name: Alacritty
+  block:
+  - name: Alacritty - Install
+    become: true
+    become_user: root
+    ansible.builtin.package:
+      name: alacritty
+      state: present
+      
