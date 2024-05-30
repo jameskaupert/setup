@@ -14,6 +14,7 @@
     - { role: package-managers }
     - { role: base }
     - { role: browsers }
+    - { role: cli-tools }
     - { role: dotfiles }
     - { role: editors }
     - { role: productivity }

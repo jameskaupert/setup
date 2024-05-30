@@ -4,5 +4,4 @@ dotfiles:
   cmd: ./install.sh
 
 packages:
-  - fzf
   - gcc
