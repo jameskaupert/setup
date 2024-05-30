@@ -17,5 +17,6 @@
     - { role: dotfiles }
     - { role: editors }
     - { role: productivity }
+    - { role: runtimes }
     - { role: social }
     - { role: terminals }

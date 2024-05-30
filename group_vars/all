@@ -6,4 +6,3 @@ dotfiles:
 packages:
   - fzf
   - gcc
-

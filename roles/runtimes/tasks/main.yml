@@ -1,0 +1,20 @@
+---
+- name: Go - Download
+  ansible.builtin.get_url:
+    url: https://go.dev/dl/go1.22.3.linux-amd64.tar.gz
+    dest: .
+
+- name: Go - Remove existing installation
+  become: yes
+  become_user: root
+  ansible.builtin.file:
+    path: /usr/local/go
+    state: absent
+
+- name: Go - Install
+  become: yes
+  become_user: root
+  ansible.builtin.unarchive:
+    src: go1.22.3.linux-amd64.tar.gz
+    dest: /usr/local
+
