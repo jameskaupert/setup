@@ -1,0 +1,7 @@
+---
+- name: Keyboard File Copy
+  become: true
+  become_user: root
+  copy:
+    src: keyboard
+    dest: /etc/default

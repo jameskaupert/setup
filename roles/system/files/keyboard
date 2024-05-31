@@ -1,0 +1,3 @@
+XKBLAYOUT=us
+BACKSPACE=guess
+XKBOPTIONS="caps:escape"
