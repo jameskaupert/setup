@@ -1,10 +1,10 @@
 ---
 - name: Ansible Community Collections - Install
-  become: yes
+  become: true
   ansible.builtin.command: ansible-galaxy collection install -r requirements.yml
 
 - name: Flatpak - Install
-  become: yes
+  become: true
   become_user: root
   ansible.builtin.package:
     name: flatpak

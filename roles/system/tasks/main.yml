@@ -5,3 +5,20 @@
   copy:
     src: keyboard
     dest: /etc/default
+
+- name: NerdFont - Download Go NerdFont
+  ansible.builtin.get_url:
+    url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Go-Mono.zip
+    dest: .
+
+- name: NerdFont - Unzip Go NerdFont
+  become: true
+  become_user: root
+  ansible.builtin.unarchive:
+    src: Go-Mono.zip
+    dest: /usr/local/share/fonts
+
+- name: NerdFont - Remove Download
+  ansible.builtin.file:
+    path: Go-Mono.zip
+    state: absent
