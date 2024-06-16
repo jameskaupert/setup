@@ -16,6 +16,7 @@
     - { role: browsers }
     - { role: cli-tools }
     - { role: dotfiles }
+    - { role: games }
     - { role: editors }
     - { role: productivity }
     - { role: runtimes }
