@@ -1,13 +1,13 @@
 ---
 - name: Dotfiles - Install stow
-  become: yes
+  become: true
   become_user: root
   ansible.builtin.package:
     name: stow
     state: present
 
 - name: Dotfiles - Get Repo
-  become: yes
+  become: true
   become_user: "{{ local_user }}"
   ansible.builtin.git:
     repo: "{{ dotfiles.repo }}"
@@ -15,9 +15,15 @@
     force: yes
 
 - name: Dotfiles - Install
-  become: yes
+  become: true
   become_user: "{{ local_user }}"
   ansible.builtin.command:
   args:
     cmd: "{{ dotfiles.cmd }}"
+    chdir: "{{ dotfiles.path }}"
+
+- name: Dotfiles - Set to use SSH
+  ansible.builtin.command:
+  args:
+    cmd: git remote set-url origin git@github.com:jameskaupert/dotfiles.git
     chdir: "{{ dotfiles.path }}"
