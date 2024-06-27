@@ -1,7 +1,12 @@
 ---
 - name: Install packages
-  become: yes
+  become: true
   become_user: root
   ansible.builtin.package:
     name: "{{ packages }}"
     state: present
+
+- name: Set setup repo to use SSH
+  ansible.builtin.command:
+  args:
+    cmd: git remote set-url origin {{ setup.repo_ssh }}

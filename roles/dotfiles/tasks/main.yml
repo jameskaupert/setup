@@ -10,7 +10,7 @@
   become: true
   become_user: "{{ local_user }}"
   ansible.builtin.git:
-    repo: "{{ dotfiles.repo }}"
+    repo: "{{ dotfiles.repo_https }}"
     dest: "{{ dotfiles.path }}"
     force: yes
 
@@ -25,5 +25,5 @@
 - name: Dotfiles - Set to use SSH
   ansible.builtin.command:
   args:
-    cmd: git remote set-url origin git@github.com:jameskaupert/dotfiles.git
+    cmd: git remote set-url origin {{ dotfiles.repo_ssh }}
     chdir: "{{ dotfiles.path }}"
