@@ -9,3 +9,6 @@ packages:
 
 setup:
   repo_ssh: git@github.com:jameskaupert/setup.git
+
+workspace:
+  path: $HOME/workspace/github.com/jameskaupert

@@ -10,3 +10,8 @@
   ansible.builtin.command:
   args:
     cmd: git remote set-url origin {{ setup.repo_ssh }}
+
+- name: Set up workspace folder
+  ansible.builtin.file:
+    path: "{{ workspace.path }}"
+    state: directory
