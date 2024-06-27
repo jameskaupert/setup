@@ -21,14 +21,8 @@
       curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin 
 
   - name: Kitty - Symlink kitty to path
-    ansible.builtin.file:
-      src: $HOME/.local/kitty.app/bin/kitty
-      dest: $HOME/.local/bin
-
-  - name: Kitty - Symlink kitten to path
-    ansible.builtin.file:
-      src: $HOME/.local/kitty.app/bin/kitten
-      dest: $HOME/.local/bin
+    ansible.builtin.command:
+      cmd: ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/
 
   - name: Kitty - Copy desktop file to apps folder
     ansible.builtin.command:
