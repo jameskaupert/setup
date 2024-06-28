@@ -6,6 +6,7 @@ dotfiles:
 
 packages:
   - gcc
+  - ripgrep
 
 setup:
   repo_ssh: git@github.com:jameskaupert/setup.git
