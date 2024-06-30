@@ -63,4 +63,17 @@
     when: cargo_exists is failed
     shell: /tmp/sh.rustup.rs -y
 
+- name: Python - Install
+  block:
+  - name: Pyenv - Install
+    ansible.builtin.git:
+      repo: https://github.com/pyenv/pyenv.git
+      dest: ~/.pyenv
 
+  - name: Pyenv - Install Python Version
+    ansible.builtin.command:
+      cmd: ~/.pyenv/bin/pyenv install {{ python.version }} --skip-existing
+
+  - name: Pyenv - Set Global Version
+    ansible.builtin.command:
+      cmd: pyenv global {{ python.version }}
