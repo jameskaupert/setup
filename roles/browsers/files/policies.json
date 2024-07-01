@@ -3,10 +3,13 @@
     "AppAutoUpdate": true,
     "AutofillAddressEnabled": false,
     "AutofillCreditCardEnabled": false,
+    "DisableFeedbackCommands": true,
+    "DisableFirefoxAccounts": true,
     "DisableFirefoxStudies": true,
     "DisableFormHistory": true,
     "DisablePocket": true,
     "DisableTelemetry": true,
+    "DontCheckDefaultBrowser": true,
     "EnableTrackingProtection": {
       "Value": true,
       "Cryptomining": true,
@@ -33,14 +36,26 @@
     },
     "ExtensionUpdate": true,
     "FirefoxHome": {
+      "TopSites": false,
       "SponsoredTopSites": false,
       "Highlights": false,
       "Pocket": false,
       "SponsoredPocket": false
     },
     "FirefoxSuggest": {
-      "SponsoredSuggestions": false
+      "WebSuggestions": false,
+      "SponsoredSuggestions": false,
+      "ImproveSuggest": false
     },
-    "PasswordManagerEnabled": false
+    "PasswordManagerEnabled": false,
+    "SanitizeOnShutdown": true,
+    "SearchSuggestEnabled": false,
+    "UserMessaging": {
+      "ExtensionRecommendations": false,
+      "FeatureRecommendations": false,
+      "UrlbarInterventions": false,
+      "SkipOnboarding": true,
+      "MoreFromMozilla": false
+    }
   }
 }
