@@ -3,12 +3,19 @@
     "AppAutoUpdate": true,
     "AutofillAddressEnabled": false,
     "AutofillCreditCardEnabled": false,
+    "DisableFirefoxStudies": true,
+    "DisableFormHistory": true,
+    "DisablePocket": true,
     "DisableTelemetry": true,
     "EnableTrackingProtection": {
       "Value": true,
       "Cryptomining": true,
       "Fingerprinting": true,
       "EmailTracking": true
+    },
+    "EncryptedMediaExtensions": {
+      "Enabled": true,
+      "Locked": false
     },
     "ExtensionSettings": {
       "uBlock0@raymondhill.net": {
