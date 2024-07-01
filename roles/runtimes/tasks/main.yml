@@ -76,4 +76,4 @@
 
   - name: Pyenv - Set Global Version
     ansible.builtin.command:
-      cmd: pyenv global {{ python.version }}
+      cmd: ~/.pyenv/bin/pyenv global {{ python.version }}
