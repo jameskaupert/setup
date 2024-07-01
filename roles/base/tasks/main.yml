@@ -15,3 +15,11 @@
   ansible.builtin.file:
     path: "{{ workspace.path }}"
     state: directory
+
+- name: Git - Set user.email
+  ansible.builtin.command:
+    cmd: git config --global user.email "{{ git_email }}"
+
+- name: Git - Set user.name
+  ansible.builtin.command:
+    cmd: git config --global user.name "{{ git_name }}"

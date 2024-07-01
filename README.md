@@ -5,10 +5,6 @@
 2. Run setup script: `./setup`
 3. `exit`
 4. Open new terminal, `sudo su`, then `exit`
-5. Run the playbook: `ansible-playbook main.yml --extra-vars "local_user=<insert-username>"`
-6. Set up git config email & name:
-```
-git config --global user.name "<name>"
-git config --global user.email "<email>"
-```
+5. `cd setup`
+6. Run the playbook: `ansible-playbook main.yml`
 7. Set up ssh keys for GitHub: `ssh-keygen -t ed25519 -C "<email>"`. Upload to GitHub.

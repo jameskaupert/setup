@@ -20,6 +20,7 @@ packages:
   - libxmlsec1-dev
   - libffi-dev
   - liblzma-dev
+  - xclip
 
 python:
   version: 3.12.4

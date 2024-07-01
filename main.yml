@@ -1,7 +1,15 @@
 ---
 - hosts: localhost
-  vars:
-    local_user: "{{ local_user }}"
+  vars_prompt:
+    - name: local_user
+      prompt: "Local User"
+      private: false
+    - name: git_email
+      prompt: "Git Email"
+      private: false
+    - name: git_name
+      prompt: "Git Name"
+      private: false
   vars_files:
     - group_vars/all
   collections:
