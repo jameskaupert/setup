@@ -28,3 +28,8 @@
       cmd: chmod +x tailwindcss
       chdir: "$HOME/.tailwindcss"
 
+- name: dust
+  block:
+  - name: Dust - Install (du replacement)
+    ansible.builtin.command:
+      cmd: cargo install du-dust

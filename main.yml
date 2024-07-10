@@ -21,13 +21,13 @@
   roles:
     - { role: package-managers }
     - { role: base }
+    - { role: runtimes }
     - { role: browsers }
     - { role: cli-tools }
     - { role: dotfiles }
     - { role: games }
     - { role: editors }
     - { role: productivity }
-    - { role: runtimes }
     - { role: social }
     - { role: system }
     - { role: terminals }
