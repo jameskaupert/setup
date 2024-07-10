@@ -42,3 +42,10 @@
   - name: Dust - Install (du replacement)
     ansible.builtin.command:
       cmd: cargo install du-dust
+
+- name: eza
+  block:
+  - name: Eza - Install (ls replacement)
+    ansible.builtin.command:
+      cmd: cargo install eza
+        
