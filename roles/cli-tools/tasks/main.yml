@@ -11,6 +11,15 @@
       chdir: "$HOME/.fzf"
       cmd: ./install
 
+- name: bat
+  block:
+  - name: Bat - Install
+    become: true
+    become_user: root
+    ansible.builtin.package:
+      name: bat
+      state: present
+
 - name: tailwindcss
   block:
   - name: Tailwind - Ensure directory exists
