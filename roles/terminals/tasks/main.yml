@@ -14,6 +14,12 @@
     shell:
       cmd: "chsh -s $(which zsh) {{ local_user }}"
 
+  - name: Install Oh My Posh
+    become: true
+    become_user: root
+    ansible.builtin.shell: >
+        curl -s https://ohmyposh.dev/install.sh | bash -s
+
 - name: Kitty
   block:
   - name: Kitty - Install
@@ -44,3 +50,16 @@
     ansible.builtin.command:
       cmd: echo 'kitty.desktop' > $HOME/.config/xdg-terminals.list
     
+- name: tmux
+  block:
+  - name: tmux - Install
+    become: true
+    become_user: root
+    ansible.builtin.package:
+      name: tmux
+      state: present
+
+  - name: tmux - Install Tmux Plugin manager
+    ansible.builtin.git:
+        repo: https://github.com/tmux-plugins/tpm
+        dest: $HOME/.tmux/plugins/tpm
