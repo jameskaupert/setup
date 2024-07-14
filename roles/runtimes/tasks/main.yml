@@ -25,6 +25,10 @@
       path: go1.22.3.linux-amd64.tar.gz
       state: absent
 
+  - name: Go - Install godoc
+    ansible.builtin.command:
+      cmd: go install golang.org/x/tools/cmd/godoc@latest
+
 - name: Node - Install
   block:
   - name: NVM - Install
