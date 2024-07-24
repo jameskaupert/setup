@@ -49,3 +49,9 @@
     ansible.builtin.command:
       cmd: cargo install eza
         
+- name: yazi
+  block:
+  - name: Yazi - Install (CLI file manager)
+    ansible.builtin.command:
+      cmd: cargo install --locked yazi-fm yazi-cli
+
