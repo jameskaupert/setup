@@ -37,6 +37,24 @@
       cmd: chmod +x tailwindcss
       chdir: "$HOME/.tailwindcss"
 
+- name: AWS CLI
+  become: true
+  become_user: root
+  block:
+  - name: AWS CLI - Unzip
+    ansible.builtin.unarchive:
+      src: "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
+      dest: "/tmp"
+      remote_src: true
+  - name: AWS CLI - Install
+    ansible.builtin.command:
+      cmd: ./aws/install
+      chdir: "/tmp"
+  - name: AWS CLI - Remove installer
+    ansible.builtin.file:
+      path: "/tmp/aws"
+      state: absent
+
 - name: dust
   block:
   - name: Dust - Install (du replacement)
