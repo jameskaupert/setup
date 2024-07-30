@@ -53,4 +53,11 @@
     ansible.builtin.command:
       cmd: mv org.godotengine.Godot.desktop /usr/local/share/applications/org.godotengine.Godot.desktop
 
-
+- name: Steam
+  block:
+  - name: Steam Install
+    become: true
+    become_user: root
+    ansible.builtin.package:
+      name: steam
+      state: present
