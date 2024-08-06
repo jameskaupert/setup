@@ -31,3 +31,4 @@
     - { role: social }
     - { role: system }
     - { role: terminals }
+    - { role: art }

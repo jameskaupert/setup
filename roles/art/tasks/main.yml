@@ -1,0 +1,8 @@
+---
+- name: Krita
+  block:
+  - name: Krita - Download AppImage
+    community.general.flatpak:
+      name: org.kde.krita
+      state: present
+      method: user
