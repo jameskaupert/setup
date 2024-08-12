@@ -22,3 +22,12 @@
   ansible.builtin.file:
     path: Go-Mono.zip
     state: absent
+
+
+- name: Flameshot - Install
+  become: true
+  become_user: root
+  ansible.builtin.package:
+    name: flameshot
+    state: present
+  
