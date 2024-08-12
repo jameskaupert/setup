@@ -5,22 +5,33 @@ dotfiles:
   cmd: ./install.sh
 
 packages:
-  - gcc
-  - ripgrep
   - build-essential
-  - libssl-dev
-  - zlib1g-dev
+  - clang 
+  - cmake 
+  - g++
+  - gcc
   - libbz2-dev
+  - libc++-dev 
+  - libc++abi-dev 
+  - libffi-dev
+  - libfontconfig1-dev
+  - libgl1-mesa-dev 
+  - liblzma-dev
+  - libncursesw5-dev
   - libreadline-dev
   - libsqlite3-dev
-  - libncursesw5-dev
-  - xz-utils
-  - tk-dev
+  - libssl-dev
+  - libx11-dev 
+  - libxcursor-dev 
+  - libxi-dev 
   - libxml2-dev
   - libxmlsec1-dev
-  - libffi-dev
-  - liblzma-dev
+  - ninja-build 
+  - ripgrep
+  - tk-dev
   - xclip
+  - xz-utils
+  - zlib1g-dev
 
 python:
   version: 3.12.4

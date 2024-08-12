@@ -5,9 +5,17 @@
     state: present
     method: user
 
-- name: Proton Email - Install
-  become: true
-  become_user: root
-  ansible.builtin.apt:
-    deb: https://proton.me/download/mail/linux/ProtonMail-desktop-beta.deb
+- name: Proton Email
+  block:
+    - name: Proton Email - Check if installed
+      shell: dpkg -s proton-mail
+      register: proton_exists
+      ignore_errors: true
+
+    - name: Proton Email - Install
+      when: proton_exists is failed
+      become: true
+      become_user: root
+      ansible.builtin.apt:
+        deb: https://proton.me/download/mail/linux/ProtonMail-desktop-beta.deb
 

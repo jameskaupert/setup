@@ -6,3 +6,55 @@
       name: org.kde.krita
       state: present
       method: user
+
+- name: Aesprite
+  block:
+  - name: Aesprite - Clone repo
+    ansible.builtin.git:
+      repo: https://github.com/aseprite/aseprite.git
+      dest: "$HOME/aesprite"
+      force: true
+      recursive: true
+
+  - name: Aesprite - Create skia directory
+    ansible.builtin.file:
+      path: "$HOME/deps/skia"
+      state: directory
+    
+  - name: Aesprite - Download skia dependency
+    ansible.builtin.unarchive:
+      src: "https://github.com/aseprite/skia/releases/download/m102-861e4743af/Skia-Linux-Release-x64-libc++.zip"
+      dest: "$HOME/deps/skia"
+      remote_src: true
+
+  - name: Aesprite - Delete existing build folder
+    ansible.builtin.file:
+      path: "$HOME/aesprite/build"
+      state: absent
+
+  - name: Aesprite - Create build folder
+    ansible.builtin.file:
+      path: "$HOME/aesprite/build"
+      state: directory
+
+  - name: Aesprite - Build
+    ansible.builtin.shell: |
+      cmake \
+      -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+      -DCMAKE_CXX_FLAGS:STRING=-stdlib=libc++ \
+      -DCMAKE_EXE_LINKER_FLAGS:STRING=-stdlib=libc++ \
+      -DLAF_BACKEND=skia \
+      -DSKIA_DIR=$HOME/deps/skia \
+      -DSKIA_LIBRARY_DIR=$HOME/deps/skia/out/Release-x64 \
+      -DSKIA_LIBRARY=$HOME/deps/skia/out/Release-x64/libskia.a \
+      -G Ninja \
+      ..
+
+      ninja aseprite
+    args:
+      chdir: "$HOME/aesprite/build"
+    environment:
+      CC: clang
+      CXX: clang++
+
+
