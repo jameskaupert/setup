@@ -7,37 +7,37 @@
       state: present
       method: user
 
-- name: Aesprite
+- name: Aseprite
   block:
-  - name: Aesprite - Clone repo
+  - name: Aseprite - Clone repo
     ansible.builtin.git:
       repo: https://github.com/aseprite/aseprite.git
-      dest: "$HOME/aesprite"
+      dest: "$HOME/aseprite"
       force: true
       recursive: true
 
-  - name: Aesprite - Create skia directory
+  - name: Aseprite - Create skia directory
     ansible.builtin.file:
       path: "$HOME/deps/skia"
       state: directory
     
-  - name: Aesprite - Download skia dependency
+  - name: Aseprite - Download skia dependency
     ansible.builtin.unarchive:
       src: "https://github.com/aseprite/skia/releases/download/m102-861e4743af/Skia-Linux-Release-x64-libc++.zip"
       dest: "$HOME/deps/skia"
       remote_src: true
 
-  - name: Aesprite - Delete existing build folder
+  - name: Aseprite - Delete existing build folder
     ansible.builtin.file:
-      path: "$HOME/aesprite/build"
+      path: "$HOME/aseprite/build"
       state: absent
 
-  - name: Aesprite - Create build folder
+  - name: Aseprite - Create build folder
     ansible.builtin.file:
-      path: "$HOME/aesprite/build"
+      path: "$HOME/aseprite/build"
       state: directory
 
-  - name: Aesprite - Build
+  - name: Aseprite - Build
     ansible.builtin.shell: |
       cmake \
       -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -52,7 +52,7 @@
 
       ninja aseprite
     args:
-      chdir: "$HOME/aesprite/build"
+      chdir: "$HOME/aseprite/build"
     environment:
       CC: clang
       CXX: clang++
