@@ -31,3 +31,36 @@
     name: flameshot
     state: present
   
+- name: Docker - Install
+  become: true
+  become_user: root
+  block:
+  - name: Docker - Create Directory
+    ansible.builtin.file:
+      path: /opt/docker
+      state: directory
+
+  - name: Docker - Download Packages
+    ansible.builtin.shell: |
+      curl -o containerd.io.deb https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/containerd.io_1.7.20-1_amd64.deb
+      curl -o docker-ce.deb https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/docker-ce_27.1.2-1~ubuntu.22.04~jammy_amd64.deb
+      curl -o docker-ce-cli.deb https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/docker-ce-cli_27.1.2-1~ubuntu.22.04~jammy_amd64.deb
+      curl -o docker-buildx-plugin.deb https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/docker-buildx-plugin_0.16.2-1~ubuntu.22.04~jammy_amd64.deb
+      curl -o docker-compose-plugin.deb https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/docker-compose-plugin_2.29.1-1~ubuntu.22.04~jammy_amd64.deb
+    args:
+      chdir: /opt/docker
+
+  - name: Docker - Install Packages
+    ansible.builtin.shell: |
+      dpkg -i ./containerd.io.deb
+      dpkg -i ./docker-ce.deb
+      dpkg -i ./docker-ce-cli.deb
+      dpkg -i ./docker-buildx-plugin.deb
+      dpkg -i ./docker-compose-plugin.deb
+    args:
+      chdir: /opt/docker
+      
+  - name: Docker - Allow non-sudo access
+    ansible.builtin.shell: |
+      groupadd docker
+      usermod -aG docker "{{ local_user }}"

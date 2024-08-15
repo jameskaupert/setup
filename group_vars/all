@@ -6,8 +6,10 @@ dotfiles:
 
 packages:
   - build-essential
+  - ca-certificates
   - clang 
   - cmake 
+  - curl
   - g++
   - gcc
   - libbz2-dev
