@@ -10,6 +10,7 @@ packages:
   - clang 
   - cmake 
   - curl
+  - ffmpeg
   - g++
   - gcc
   - libbz2-dev
