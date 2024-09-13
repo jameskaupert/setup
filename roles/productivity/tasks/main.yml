@@ -19,3 +19,26 @@
       ansible.builtin.apt:
         deb: https://proton.me/download/mail/linux/ProtonMail-desktop-beta.deb
 
+- name: Postman
+  become: true
+  become_user: root
+  block:
+  - name: Postman
+    ansible.builtin.get_url:
+      url: https://dl.pstmn.io/download/latest/linux_64
+      dest: . 
+
+  - name: Postman - Remove existing installation
+    ansible.builtin.file:
+      path: /opt/postman
+      state: absent
+
+  - name: Postman - Unzip new installation
+    ansible.builtin.unarchive:
+      src: postman-linux-x64.tar.gz
+      dest: /opt
+
+  - name: Postman - Remove download
+    ansible.builtin.file:
+      path: postman-linux-x64.tar.gz
+      state: absent
