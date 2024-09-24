@@ -23,7 +23,7 @@
   become: true
   become_user: root
   block:
-  - name: Postman
+  - name: Postman - Download
     ansible.builtin.get_url:
       url: https://dl.pstmn.io/download/latest/linux_64
       dest: . 
@@ -42,3 +42,12 @@
     ansible.builtin.file:
       path: postman-linux-x64.tar.gz
       state: absent
+
+- name: OBS
+  block:
+  - name: OBS - Install
+    community.general.flatpak:
+      name: com.obsproject.Studio
+      state: present
+      method: user
+
