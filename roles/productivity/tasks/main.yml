@@ -51,3 +51,11 @@
       state: present
       method: user
 
+
+- name: Kdenlive
+  block:
+  - name: Kdenlive - Install
+    community.general.flatpak:
+      name: org.kde.kdenlive
+      state: present
+      method: user
