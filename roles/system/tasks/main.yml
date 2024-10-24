@@ -69,3 +69,18 @@
     ansible.builtin.shell: |
         curl -L "https://github.com/docker/compose/releases/download/v2.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         chmod +x /usr/local/bin/docker-compose
+
+- name: QEMU
+  become: true
+  become_user: root
+  block:
+  - name: QEMU - Install
+    ansible.builtin.package:
+      name: qemu-system
+      state: present
+
+  # OVMF provides UEFI support
+  - name: OVMF - Install
+    ansible.builtin.package:
+      name: ovmf
+      state: present
