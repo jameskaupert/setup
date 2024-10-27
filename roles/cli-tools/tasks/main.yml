@@ -84,3 +84,24 @@
     ansible.builtin.command:
       cmd: cargo install --locked yazi-fm yazi-cli
 
+- name: btop (top replacement)
+  become: true
+  become_user: root
+  block:
+  - name: btop - Download
+    ansible.builtin.get_url:
+      url: https://github.com/aristocratos/btop/releases/download/v1.4.0/btop-x86_64-linux-musl.tbz
+      dest: /tmp
+  - name: btop - Unzip
+    ansible.builtin.unarchive:
+      src: /tmp/btop-x86_64-linux-musl.tbz
+      dest: /usr/local
+  - name: btop - Install
+    ansible.builtin.command:
+      cmd: make install
+      chdir: /usr/local/btop
+  - name: btop - Add Intel GPU support
+    ansible.builtin.command:
+      cmd: make setcap
+      chdir: /usr/local/btop
+  
